@@ -26,6 +26,13 @@ if(DEFINED TARGET_BOARD)
           "-mfloat-abi=hard"
           "-mfpu=neon-vfpv4"
           )
+  elseif(${TARGET_BOARD} STREQUAL "vobot")
+    # vobot specific
+    set(FLAGS_COMMON
+          ${FLAGS_COMMON}
+          "-mcpu=cortex-a7"
+          "-mfpu=neon"
+          )
   else()
     message(FATAL_ERROR "TARGET_BOARD=`${TARGET_BOARD}` is unknown to make")
   endif()
